@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Nickname Finder</title>
+</head>
+<body>
+    <div>
+        <div class="container">
+          <div class="transparentSheet">
+            <h2>FIND YOUR <span>NICKNAME</span></h2>
+            <br>
+
+            <label for="firstName">FIRST NAME</label>
+            <input type="text" id="firstName" name="firstName" required>
+            
+            <label for="lastName">LAST NAME</label>
+            <input type="text" id="lastName" name="lastName" required>
+           
+            <button type="button"  onclick ="generateNickNamesDisplay()" id="letsGo" name="letsGo">lets GO!</button>
+
+            <textarea id="nicknames"></textarea>
+          </div>
+        </div>
+    </div>
+    
+   <script type="text/javascript">
+
+      function getSlice(name, start, length){
+        if (start < 0){
+          start = name.length + start;
+        }
+        let slice = name.slice(start, start + length);
+        while (slice.length < length){
+          slice += name[start % name.length];
+          start++;
+        }
+        return slice;
+      } 
+
+      function generateNicknames(firstName,lastName){
+
+          if(firstName.length === 0 || lastName.length === 0){
+            throw new Error("First name and last name must not be empty.");
+          }
+
+          const totalLength = 5;
+          const firstNamePartLength = Math.ceil(totalLength/2);
+          const lastNamePartLength = totalLength - firstNamePartLength;
+
+          const nickname1 = getSlice(firstName, 0, firstNamePartLength) + getSlice(lastName, 0, lastNamePartLength);
+          const nickname2 = getSlice(firstName, 0, firstNamePartLength) + getSlice(lastName, -lastNamePartLength, lastNamePartLength);
+          const nickname3 = getSlice(firstName, 1, firstNamePartLength) + getSlice(lastName, 0, lastNamePartLength);
+          const nickname4 = getSlice(firstName, -firstNamePartLength, firstNamePartLength) + getSlice(lastName, -lastNamePartLength, lastNamePartLength);
+          const nickname5 = getSlice(firstName, -firstNamePartLength, firstNamePartLength) + getSlice(lastName, 0, lastNamePartLength);
+          const nickname6 = getSlice(firstName, firstNamePartLength/2 , firstNamePartLength) + getSlice(lastName, lastNamePartLength/2, lastNamePartLength);
+      
+          return [nickname1, nickname2, nickname3, nickname4, nickname5, nickname6];
+
+        }
+
+
+      function generateNickNamesDisplay(){
+          const firstName = document.getElementById("firstName").value;
+          const lastName = document.getElementById("lastName").value;
+          try { 
+            document.getElementById("nicknames").style.display = 'block';
+
+            const nicknames = generateNicknames(firstName, lastName);
+            document.getElementById("nicknames").value = nicknames.join("\n");
+          } 
+          catch(error){
+            alert(error.message);
+          }
+    };  
+   </script> 
+</body>
+</html>

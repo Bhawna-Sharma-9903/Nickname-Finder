@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemonada:wght@300..700&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: "Lemonada", cursive;
+    font-weight: lighter;
+}
+
+body { 
+    background-color: rgb(46, 44, 44);
+    background-size: 100%;
+    background-position: center;
+
+}
+
+
+.container {
+    background-image:url("bg.png") ;
+    width: 39em;
+    height: 39em;
+    align-items: center;
+    margin:0 auto 0;
+}
+
+.transparentSheet {
+    position: absolute;
+    background : linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 8px 32px 0 rgba(0,0,0,0.37);
+    margin:60px;
+    margin-left: 100px;
+    width: 400px;
+    height: 520px;
+}
+
+h2 { 
+    margin: 50px 0 0 50px ;
+}
+
+h2 span {
+    color:brown;
+}
+
+label {
+    margin: 50px ;
+}
+
+input[type=text] { 
+    width: 70%;
+    border-style: none;
+    margin: 0 20px 20px 50px ;
+}
+
+button {
+    margin : 20px 0 0 120px;
+    border-style: none;
+    border-radius: 9em;
+    background-color: #197beb;
+    color: white;
+    padding : 10px;
+    width: 150px;
+}
+
+button:hover {
+    transform: translate(-0.05em, -0.05em);
+    box-shadow: 0.15em 0.15em #434346;
+}
+
+button:active {
+    transform: translate(0.05em, 0.05em);
+    box-shadow: 0.15em 0.15em #434346;
+}
+
+textarea { 
+    margin : 20px 0 0 50px;
+    width : 70%;
+    height: 100px;
+    border-style: none;
+    display: none;
+}
+
